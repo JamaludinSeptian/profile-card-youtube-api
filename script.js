@@ -1,9 +1,3 @@
-// ambil id getPosts dan tambahkan addEventClickListener yang artinya jika button tersebut di klik maka akan melakukan sesuatu atau event
-        //document.getElementById('getPosts').addEventListener('click', getPosts);
-    
-        // kita buat function getPosts, jadi ketika diklik dia akan melakukan apa ? nah kita buat fungsi-nya (function)
-        //function getPosts() {
-          // kita gunakan fetch dalam kita ambil data sample.txt yang sudah kita buat
           fetch('https://youtube.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCX1s6xSBP2hBdEJlNurOolQ&key=AIzaSyB9_39PuB599l_z5YyE2bEkQPKBPfeFRI0')
           // kita buat response menjadi json
           .then((response) => response.json())
@@ -11,17 +5,14 @@
           .then((data) => {
             // kita buat variabel output 
             let output = '';
-            // kita console.log agar mengetahui apakah data nya sudah masuk atau belum
+            // mendefinisikan variabel dan mengisi data dari api yang diiginkan
             const profilePicture = data.items[0].snippet.thumbnails.medium.url;
             const channelName = data.items[0].snippet.title;
             const subscribeCount = data.items[0].statistics.subscriberCount;
             const viewCount = data.items[0].statistics.viewCount;
             const descriptionChannel = data.items[0].snippet.description;
             const videoCount = data.items[0].statistics.videoCount;
-            // forEach ini adalah looping dan dinamakan post
-            //data.forEach((post) => {
-              // kita tambahkan output-nya jangan lupa gunakan backslash `` yang di sebelah angka nomer 1
-              // kita panggil id name email didapat dari post.json
+            // output untuk menampilkan profile card
               output += `
               <div class="profile-card js-profile-card">
                   <div class="profile-card__img">
@@ -92,8 +83,7 @@
                   </div>
               
                   
-              </div>
-              `;
+              </div>`;
             //})
             // kita panggil id output agar bisa di tampilkan ke browser saat di klik
             document.getElementById('output').innerHTML = output;
